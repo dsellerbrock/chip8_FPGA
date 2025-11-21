@@ -4,7 +4,12 @@
 version: '0.2'
 work_dir: .
 design_root_dir: C:\projects\chip8_FPGA\chip8_FPGA
-simulations: []
-source_files: []
+simulations:
+  - name: run_test
+    options: '-top work.ch8_top'
+source_files:
+  - language: verilog
+    path: chip8_source\RTL\chip8_top.v
+    library_name: work
 library_search_paths:
   - $STD_LIBS\ieee93

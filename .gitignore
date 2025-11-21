@@ -1,0 +1,61 @@
+# Altair DSim work directories
+dsim_work/
+
+# DSim compilation outputs
+*.vcd
+*.wlf
+*.log
+
+# DSim configuration and environment
+*.env
+
+# DSim libraries and caches
+*.sir
+*.cache
+*.def
+
+# DSim object files
+*.obj
+*.o
+
+# Build artifacts
+*.db
+*.mem
+
+# Link work files (LLwork.*)
+LLwork.*
+
+# Linker options
+linkeropts
+
+# Metrics database
+metrics.db
+
+# Exports
+exports.def
+
+# SFE work directories
+sfe/
+
+# Ignore specific generated files
+ir.cache
+LBstd.sir
+LR.sir
+manifest
+
+# Configuration files (comment out if you want to track these)
+mdc_config.yml
+mdc_ignore
+
+# Workspace files
+.mdc
+
+# Backup files
+*.bak
+*~
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db

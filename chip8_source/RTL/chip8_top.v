@@ -57,35 +57,35 @@ module ch8_top(
     // -------------------------
     // Clock divider → clock enable pulse
     // -------------------------
-    /* reg [27:0] clock_div = 0;
-       wire tick = (clock_div == 28'd24_999_999);  // 125 MHz / 25M = 5 Hz */
+     reg [27:0] clock_div = 0;
+       wire tick = (clock_div == 28'd24_999_999);  // 125 MHz / 25M = 5 Hz 
     
     // -------------------------
     // RAM walker logic (runs every tick)
     // -------------------------
-    /* reg [11:0] j = 0;          // 12-bit index into 4K RAM
-       reg [7:0]  ram_data_out; */
+     reg [11:0] j = 0;          // 12-bit index into 4K RAM
+       reg [7:0]  ram_data_out; 
 
     
     initial begin
         for (i = 0; i < 4096; i = i + 1)
             ram[i] = 8'hFF;
 
-        $readmemh("snake.mem", ram);
+        $readmemh("chip8_source\\memory\\snake.mem", ram);
 
         // optional display for simulation
-        // for (i = 0; i < 16; i = i + 1)
-        //    $display("RAM[%0d] = %h", i, ram[i]);
+         for (i = 0; i < 16; i = i + 1)
+            $display("RAM[%0d] = %h", i, ram[i]);
     end
 
-    /* always @(posedge clk) begin
+     always @(posedge clk) begin
         if (tick)
             clock_div <= 0;
         else
             clock_div <= clock_div + 1;
-    end */
+    end 
 
-    /* always @(posedge clk) begin
+     always @(posedge clk) begin
         if (tick) begin
             if (j == 12'd4095)
                 j <= 0;
@@ -94,7 +94,7 @@ module ch8_top(
             ram_data_out <= ram[j];
             data_out <= ram_data_out;
         end
-    end */
+    end 
     
     always @(posedge clk) begin
         if (reset == 1) begin
@@ -124,12 +124,12 @@ module ch8_top(
                     fdx_state <= EXECUTE;
                 end
             
-                EXECUTE: begin
+                /*EXECUTE: begin
                     case(instr)
                     
                     endcase
                     fdx_state <= FETCH;
-                end
+                end*/
                 default: fdx_state = INVALID;
             endcase
         end
