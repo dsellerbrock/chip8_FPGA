@@ -1,10 +1,10 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: SELF
+// Company: Personal Project
 // Engineer: Daniel S Ellerbrock
 // 
 // Create Date: 10/25/2025 10:46:17 AM
-// Design Name: 
+// Design Name: Chip-8 Top Level Module
 // Module Name: ch8_top
 // Description: Basic Chip-8 RAM walker for LED test
 //////////////////////////////////////////////////////////////////////////////////
