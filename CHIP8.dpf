@@ -11,5 +11,4 @@ source_files:
   - language: verilog
     path: chip8_source\RTL\chip8_top.v
     library_name: work
-library_search_paths:
-  - $STD_LIBS\ieee93
+library_search_paths: []
