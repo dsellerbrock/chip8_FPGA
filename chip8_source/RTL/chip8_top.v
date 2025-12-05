@@ -65,7 +65,7 @@ module ch8_top(
     // RAM walker logic (runs every tick)
     // -------------------------
      reg [11:0] j = 0;          // 12-bit index into 4K RAM
-       reg [7:0]  ram_data_out; 
+     reg [7:0]  ram_data_out; 
 
     
     initial begin
@@ -76,8 +76,8 @@ module ch8_top(
         $readmemh("chip8_source\\memory\\snake.mem", ram);
 
         // optional display for simulation
-         for (i = 0; i <  16; i = i + 1)
-            $display("RAM[%0d] = %h", i, ram[i]);
+         //for (i = 0; i <  16; i = i + 1)
+         //   $display("RAM[%0d] = %h", i, ram[i]);
 
         
 
