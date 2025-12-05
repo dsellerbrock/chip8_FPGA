@@ -144,7 +144,9 @@ module ch8_top(
                     4'h0: begin
                         case (NNN)
                             12'h0E0: begin
-                               for 
+                               //for 
+                                PC <= stack[stack_ptr-1];
+                                stack_ptr <= stack_ptr - 1;
                             end
                             12'h0EE: begin
                                 PC <= stack[stack_ptr-1];
@@ -157,7 +159,7 @@ module ch8_top(
                     4'h1: begin
                         PC <= NNN;
                     end
-                    4'2: begin
+                    4'h2: begin
                         stack[stack_ptr] <= PC;
                         stack_ptr <= stack_ptr + 1;
                         PC<=NNN;     
@@ -184,7 +186,7 @@ module ch8_top(
                         gen_reg[X] <= gen_reg[X] + NN;
                     end
                     4'h8: begin
-                        case (N) begin
+                        case (N)
                             4'h0: begin
                                 gen_reg[X] <= gen_reg[Y];
                             end
