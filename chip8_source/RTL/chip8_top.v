@@ -11,6 +11,7 @@
 
 module ch8_top(
     input  wire       clk,        // 125 MHz input clock
+    input wire        reset,
     output reg  [7:0] data_out    // LED output
 );
     localparam INVALID = 2'b00;
@@ -21,7 +22,7 @@ module ch8_top(
     // State Machine Vals
     // -------------------------
     reg [1:0] fdx_state;
-    reg reset = 1;
+    //reg reset = 1;
     // -------------------------
     // RAM initialization
     // -------------------------
@@ -92,14 +93,14 @@ module ch8_top(
         //end
     end
 
-     always @(posedge clk) begin
+     /*always @(posedge clk) begin
         if (tick)
             clock_div <= 0;
         else
             clock_div <= clock_div + 1;
-    end 
+    end */
 
-     always @(posedge clk) begin
+     /*always @(posedge clk) begin
         if (tick) begin
             if (j == 12'd4095)
                 j <= 0;
@@ -108,7 +109,7 @@ module ch8_top(
             ram_data_out <= ram[j];
             data_out <= ram_data_out;
         end
-    end 
+    end */
     
     always @(posedge clk) begin
         if (reset == 1) begin
@@ -144,22 +145,22 @@ module ch8_top(
                     4'h0: begin
                         case (NNN)
                             12'h0E0: begin
-                               //for 
-                                PC <= stack[stack_ptr-1];
-                                stack_ptr <= stack_ptr - 1;
+                               for (i =0; i<63; i=i+1) begin
+                                    screen_buffer[i] <= 0;
+                               end
                             end
-                            12'h0EE: begin
+                            /*12'h0EE: begin
                                 PC <= stack[stack_ptr-1];
                                 stack_ptr <= stack_ptr - 1;
                             end
                             default: begin
-                            end
+                            end*/
                         endcase
                     end
                     4'h1: begin
                         PC <= NNN;
                     end
-                    4'h2: begin
+                    /*4'h2: begin
                         stack[stack_ptr] <= PC;
                         stack_ptr <= stack_ptr + 1;
                         PC<=NNN;     
@@ -178,14 +179,14 @@ module ch8_top(
                         if(gen_reg[X] == gen_reg[Y]) begin
                             PC <= PC + 2;
                         end
-                    end
+                    end*/
                     4'h6: begin
                         gen_reg[X] <= NN;
                     end
                     4'h7: begin
                         gen_reg[X] <= gen_reg[X] + NN;
                     end
-                    4'h8: begin
+                    /*4'h8: begin
                         case (N)
                             4'h0: begin
                                 gen_reg[X] <= gen_reg[Y];
@@ -225,25 +226,25 @@ module ch8_top(
                         if(gen_reg[X] != gen_reg[Y]) begin
                             PC <= PC + 2;
                         end
-                    end
+                    end*/
                     4'hA: begin
                         I <= NNN;
                     end
-                    4'hB: begin
+                    /*4'hB: begin
                         PC <= NNN;
                     end
                     4'hC: begin
                         PC <= NNN;
-                    end
+                    end*/
                     4'hD: begin
-                        PC <= NNN;
+                        
                     end
-                    4'hE: begin
+                    /*4'hE: begin
                         PC <= NNN;
                     end
                     4'hF: begin
                         PC <= NNN;
-                    end
+                    end*/
                     default: begin
                     //function not implemented
                     end
