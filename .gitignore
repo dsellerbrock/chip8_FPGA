@@ -58,4 +58,4 @@ mdc_ignore
 
 # OS generated files
 .DS_Store
-Thumbs.db
+Thumbs.db.DS_Store
